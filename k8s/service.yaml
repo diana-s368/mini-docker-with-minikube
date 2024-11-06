@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+spec:
+  selector:
+    app: flask-app  # указывает на поды, к которым сервис будет направлять трафик
+  ports:
+    - protocol: TCP
+      port: 80  # внешний порт для доступа к приложению
+      targetPort: 5000  # порт внутри контйнера, на который будет перенаправлен трафик
+  type: LoadBalancer  # тип сервис, который позволяет создавать балансировщик нагрузки
+

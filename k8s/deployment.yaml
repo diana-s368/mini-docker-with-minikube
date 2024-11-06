@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+
+spec:
+  replicas: 2  # кол-во подов (контейнеров), которые будут запущены
+  selector:
+    matchLabels:
+      app: flask-app # метка для идентификации контейнеров этого приложения
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-container
+        image: diana368/my-flask-app  # имя образа докер
+        ports:
+        - containerPort: 5000 # порт внутри контейнера на котором работает приложение 
